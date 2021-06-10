@@ -12,21 +12,26 @@
 <div class="oj-flex">
   <!-- left column -->
   <div class="oj-sm-3">
+    <!-- search -->
+    <oj-input-text class="oj-sm-12 oj-sm-padding-3x-vertical oj-sm-padding-2x-horizontal">
+    </oj-input-text>
     <!-- List ticket -->
-    <oj-list-view id="ticket-list" 
-      aria-label="ticket-list"
-      data="[[ticketListDataSource]]"
-      selection-mode="single"
-      selection-required="true"
-      item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('ticket-list-template', true)]]"
-    >
-      <!-- <template slot="itemTemplate">
-        <span>
-          <oj-bind-text value="[[$current.data.]]"></oj-bind-text>
-        </span>
-      </template> -->
+    <div class="oj-flex list-view-container">
+      <oj-list-view id="ticket-list" 
+        aria-label="ticket-list"
+        data="[[ticketListDataSource]]"
+        selection-mode="single"
+        selection-required="true"
+        item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('ticket-list-template', true)]]"
+      >
+        <!-- <template slot="itemTemplate">
+          <span>
+            <oj-bind-text value="[[$current.data.]]"></oj-bind-text>
+          </span>
+        </template> -->
 
-    </oj-list-view>
+      </oj-list-view>
+    </div>
       <script type="text/html" id="ticket-list-template">
         <li data-bind="attr: {id: $data['id']}">
           <div class="oj-flex">
@@ -60,6 +65,33 @@
   </div>
   <!-- right column -->
   <div class="oj-sm-9">
+    <!-- tab bar -->
+    <div class="oj-flex oj-sm-padding-3x-top">
+      <oj-tab-bar
+        contextmenu="tabmenu"
+        id="ticket-tab-bar"
+        selection="{{selectedTabItem}}"
+        edge="top"
+        data="[[tabBarDataSource]]"
+        item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('tab-template', true)]]"
+        on-oj-remove="[[onTabRemove]]"
+        class="oj-sm-12 oj-sm-condense"
+      >
+        <oj-menu slot="contextMenu" style="display:none" aria-label="Actions">
+          <oj-option data-oj-command="oj-tabbar-remove">
+           Removable 
+          </oj-option>
+        </oj-menu>
+      </oj-tab-bar>
+      <script type="text/html" id="tab-template">
+        <li class="oj-removable" data-bind="css:{'oj-disabled': $data['disabled'] == 'true'}">
+          <a href="#">
+            <oj-bind-text value="[[name]]">
+            </oj-bind-text>
+          </a>
+        </li>
+      </script>
+    </div>
     Ticket content
   </div>
 </div>

@@ -85,8 +85,10 @@
            ** and the CSS documentation under Support/API Docs/Non-Component Styling
            ** on the JET website for more information on how to use this pattern.
         -->
-        <header role="banner" class="oj-web-applayout-header">
-          <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+        <!-- <header role="banner" class="oj-web-applayout-header"> -->
+        <header role="banner" class="oj-web-applayout-header oj-sm-padding-2x-vertical">
+          <!-- <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center"> -->
+          <div class="oj-flex-bar oj-sm-align-items-center">
             <!-- Offcanvas toggle button -->
             <div class="oj-flex-bar-start oj-md-hide">
               <oj-button id="drawerToggleButton" class="oj-button-lg" on-oj-action="[[toggleDrawer]]" chroming="borderless" display="icons">
@@ -95,12 +97,12 @@
               </oj-button>
             </div>
             <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
-              <span role="img" class="oj-icon demo-oracle-icon" title="Oracle Logo" alt="Oracle Logo"></span>
+              <!-- <span role="img" class="oj-icon demo-oracle-icon" title="Oracle Logo" alt="Oracle Logo"></span> -->
               <h1 class="oj-sm-only-hide oj-web-applayout-header-title" title="Application Name"><oj-bind-text value="[[appName]]"></oj-bind-text></h1>
             </div>
             <div class="oj-flex-bar-end">
               <!-- Responsive Toolbar -->
-              <oj-toolbar>
+              <!-- <oj-toolbar>
                 <oj-menu-button id="userMenu" display="[[smScreen() ? 'icons' : 'all']]" chroming="borderless">
                   <span><oj-bind-text value="[[userLogin]]"></oj-bind-text></span>
                   <span slot="endIcon" :class="[[{'oj-icon demo-appheader-avatar': smScreen(), 'oj-component-icon oj-button-menu-dropdown-icon': !smScreen()}]]"></span>
@@ -111,7 +113,13 @@
                     <oj-option id="out" value="out">Sign Out</oj-option>
                   </oj-menu>
                 </oj-menu-button>
-              </oj-toolbar>
+              </oj-toolbar> -->
+              <div class="oj-flex oj-md-align-items-center oj-sm-margin-wx-vertical">
+                <oj-avatar role="img" aria-label="Single Placeholder Avatar" size="xxs"></oj-avatar>
+                <span class="oj-flex oj-sm-padding-2x-start">
+                  Welcome back James, you currently have 2 open tickets, with 1 awaiting your response.
+                </span>
+              </div>
             </div>
           </div>
           <div role="navigation" class="oj-web-applayout-max-width oj-web-applayout-navbar">
