@@ -1,0 +1,65 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<!-- <div class="oj-hybrid-padding">
+  <h1>Dashboard Content Area</h1>
+  <div>
+      To change the content of this section, you will make edits to the dashboard.html file located in the /js/views folder.
+  </div>
+</div> -->
+<div class="oj-flex">
+  <!-- left column -->
+  <div class="oj-sm-3">
+    <!-- List ticket -->
+    <oj-list-view id="ticket-list" 
+      aria-label="ticket-list"
+      data="[[ticketListDataSource]]"
+      selection-mode="single"
+      selection-required="true"
+      item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('ticket-list-template', true)]]"
+    >
+      <!-- <template slot="itemTemplate">
+        <span>
+          <oj-bind-text value="[[$current.data.]]"></oj-bind-text>
+        </span>
+      </template> -->
+
+    </oj-list-view>
+      <script type="text/html" id="ticket-list-template">
+        <li data-bind="attr: {id: $data['id']}">
+          <div class="oj-flex">
+            <div class="oj-sm-8">
+              <strong>Ticket ID:</strong>
+              <oj-bind-text value="[[id]]">
+              </oj-bind-text>
+            </div>
+            <div class="oj-sm-4">
+              <oj-bind-text value="[[$parent.formatDate(dateCreated)]]">
+              </oj-bind-text>
+            </div>
+          </div>
+          <div class="oj-flex oj-sm-padding-2x-top oj-sm-padding-2x-bottom">
+            <oj-bind-text value="[[title]]">
+            </oj-bind-text>
+          </div>
+          <div class="oj-flex">
+            <div class="oj-sm-8">
+              <strong>Status:</strong>
+              <oj-bind-text value="[[status]]">
+              </oj-bind-text>
+            </div>
+            <div class="oj-sm-4">
+              <oj-bind-text value="[[priority]]">
+              </oj-bind-text>
+            </div>
+          </div>
+        </li>
+      </script>
+  </div>
+  <!-- right column -->
+  <div class="oj-sm-9">
+    Ticket content
+  </div>
+</div>
